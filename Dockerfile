@@ -15,7 +15,7 @@ COPY index.php /var/www/html/
 RUN chown -R www-data:www-data /var/www/html
 
 # 安装PHP组件
-RUN docker-php-ext-install mysqli
+RUN docker-php-ext-install mysqli pdo_mysql
 
 # 暴露容器的 80 端口，表示 Nginx 将在此端口监听传入的请求
 EXPOSE 80
