@@ -14,6 +14,9 @@ COPY index.php /var/www/html/
 # 设置 Web 根目录的权限，确保 www-data 用户（PHP-FPM 运行的用户）可以读写
 RUN chown -R www-data:www-data /var/www/html
 
+# 安装PHP组件
+RUN docker-php-ext-install mysqli
+
 # 暴露容器的 80 端口，表示 Nginx 将在此端口监听传入的请求
 EXPOSE 80
 
