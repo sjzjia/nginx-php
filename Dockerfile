@@ -9,7 +9,7 @@ RUN apk add --no-cache nginx
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # 将本地的 html 目录中的所有应用代码复制到 Nginx 的 Web 根目录
-COPY index.php /var/www/html/
+COPY html/ /var/www/html/
 
 # 设置 Web 根目录的权限，确保 www-data 用户（PHP-FPM 运行的用户）可以读写
 RUN chown -R www-data:www-data /var/www/html
