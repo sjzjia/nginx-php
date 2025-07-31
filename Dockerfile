@@ -3,7 +3,7 @@ FROM php:8.3-fpm-alpine
 
 # 安装 Nginx
 # --no-cache 选项用于在安装后清理缓存，进一步减小镜像大小
-RUN apk add --no-cache nginx
+RUN apk add --no-cache nginx zlib libpng-dev
 
 # 复制自定义的 Nginx 配置文件到镜像中
 COPY nginx.conf /etc/nginx/nginx.conf
@@ -15,7 +15,7 @@ COPY html/ /var/www/html/
 RUN chown -R www-data:www-data /var/www/html
 
 # 安装PHP组件
-RUN docker-php-ext-install mysqli pdo_mysql
+RUN docker-php-ext-install mysqli pdo_mysql gd
 
 # 暴露容器的 80 端口，表示 Nginx 将在此端口监听传入的请求
 EXPOSE 80
