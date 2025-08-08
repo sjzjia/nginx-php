@@ -8,6 +8,9 @@ RUN apk add --no-cache nginx zlib libpng-dev
 # 复制自定义的 Nginx 配置文件到镜像中
 COPY nginx.conf /etc/nginx/nginx.conf
 
+# 复制自定义的 php 配置文件到镜像中
+COPY php.ini /usr/local/etc/php/
+
 # 将本地的 html 目录中的所有应用代码复制到 Nginx 的 Web 根目录
 COPY html/ /var/www/html/
 
